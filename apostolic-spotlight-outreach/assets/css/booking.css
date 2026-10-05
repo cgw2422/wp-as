@@ -1,0 +1,93 @@
+/* Apostolic Spotlight – public scheduler */
+.aso-booking {
+	--aso-accent: #1e3a8a;
+	--aso-accent-soft: #e8edfb;
+	--aso-ink: #1f2937;
+	--aso-muted: #6b7280;
+	--aso-line: #e5e7eb;
+	--aso-bg: #ffffff;
+	box-sizing: border-box;
+	max-width: 1040px;
+	margin: 40px auto;
+	padding: 0 16px;
+	color: var(--aso-ink);
+	font-family: inherit;
+}
+.aso-booking *, .aso-booking *::before, .aso-booking *::after { box-sizing: inherit; }
+.aso-booking__card {
+	display: grid;
+	grid-template-columns: minmax(240px, 320px) 1fr;
+	background: var(--aso-bg);
+	border: 1px solid var(--aso-line);
+	border-radius: 14px;
+	box-shadow: 0 10px 30px rgba(17, 24, 39, .06);
+	overflow: hidden;
+}
+.aso-booking__card--narrow { grid-template-columns: 1fr; max-width: 640px; margin: 0 auto; }
+.aso-booking__intro { padding: 32px 28px; border-right: 1px solid var(--aso-line); background: #fafbff; }
+.aso-booking__main { padding: 32px 28px; min-width: 0; }
+.aso-booking__eyebrow { margin: 0 0 6px; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--aso-muted); font-weight: 600; }
+.aso-booking__title { margin: 0 0 16px; font-size: 26px; line-height: 1.2; }
+.aso-booking__meta { list-style: none; margin: 0 0 18px; padding: 0; color: var(--aso-muted); font-weight: 600; }
+.aso-booking__meta li { margin: 6px 0; padding-left: 18px; position: relative; }
+.aso-booking__meta li::before { content: ""; position: absolute; left: 0; top: .55em; width: 8px; height: 8px; border-radius: 50%; background: var(--aso-accent); }
+.aso-booking__text { line-height: 1.6; color: var(--aso-ink); }
+.aso-booking__notice { background: #fff7e6; border: 1px solid #f5d7a1; border-radius: 8px; padding: 10px 12px; font-size: 14px; }
+.aso-booking__small { color: var(--aso-muted); font-size: 14px; }
+.aso-step__title { margin: 0 0 4px; font-size: 20px; }
+.aso-booking__tz { margin: 0 0 16px; color: var(--aso-muted); font-size: 14px; }
+.aso-booking__status { color: var(--aso-muted); min-height: 1.2em; margin-bottom: 8px; }
+.aso-booking__picker { display: grid; grid-template-columns: minmax(0, 1fr) 220px; gap: 20px; }
+.aso-days { display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: 8px; align-content: start; }
+.aso-day {
+	display: flex; flex-direction: column; align-items: center; gap: 2px;
+	padding: 10px 6px; border: 1px solid var(--aso-line); border-radius: 10px;
+	background: #fff; cursor: pointer; font: inherit; color: var(--aso-ink);
+}
+.aso-day:hover { border-color: var(--aso-accent); }
+.aso-day.is-active { background: var(--aso-accent); border-color: var(--aso-accent); color: #fff; }
+.aso-day__dow { font-size: 12px; text-transform: uppercase; letter-spacing: .05em; opacity: .8; }
+.aso-day__date { font-weight: 700; }
+.aso-day__count { font-size: 11px; opacity: .75; }
+.aso-times { display: flex; flex-direction: column; gap: 8px; max-height: 420px; overflow-y: auto; }
+.aso-times__heading { margin: 0 0 4px; font-weight: 600; }
+.aso-time {
+	padding: 11px; border: 1px solid var(--aso-accent); border-radius: 8px; background: #fff;
+	color: var(--aso-accent); font: inherit; font-weight: 700; cursor: pointer;
+}
+.aso-time:hover, .aso-time:focus { background: var(--aso-accent-soft); }
+.aso-form { max-width: 460px; }
+.aso-form__selected { background: var(--aso-accent-soft); color: var(--aso-accent); border-radius: 8px; padding: 10px 12px; font-weight: 600; }
+.aso-field { display: block; margin: 0 0 14px; }
+.aso-field > span { display: block; font-weight: 600; margin-bottom: 4px; font-size: 14px; }
+.aso-field input, .aso-field textarea {
+	width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 8px; font: inherit; background: #fff; color: var(--aso-ink);
+}
+.aso-field input:focus, .aso-field textarea:focus { outline: 2px solid var(--aso-accent-soft); border-color: var(--aso-accent); }
+.aso-field small { color: var(--aso-muted); }
+.aso-button {
+	display: inline-block; padding: 12px 20px; border-radius: 8px; border: 0; background: var(--aso-accent);
+	color: #fff !important; font: inherit; font-weight: 700; cursor: pointer; text-decoration: none;
+}
+.aso-button[disabled] { opacity: .6; cursor: wait; }
+.aso-button--ghost { background: #fff; color: var(--aso-accent) !important; border: 1px solid var(--aso-accent); }
+.aso-link { background: none; border: 0; padding: 0; color: var(--aso-accent); cursor: pointer; font: inherit; text-decoration: underline; }
+.aso-hp { position: absolute !important; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.aso-confirm { display: grid; grid-template-columns: 120px 1fr; gap: 10px 16px; margin: 24px 0; }
+.aso-confirm dt { color: var(--aso-muted); font-weight: 600; }
+.aso-confirm dd { margin: 0; }
+.aso-confirm__icon { width: 48px; height: 48px; border-radius: 50%; background: #dcfce7; margin-bottom: 12px; position: relative; }
+.aso-confirm__icon::after { content: ""; position: absolute; left: 18px; top: 11px; width: 10px; height: 20px; border: solid #166534; border-width: 0 4px 4px 0; transform: rotate(45deg); }
+.aso-confirm__actions { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 12px; }
+[hidden] { display: none !important; }
+
+@media (max-width: 760px) {
+	.aso-booking { margin: 16px auto; }
+	.aso-booking__card { grid-template-columns: 1fr; }
+	.aso-booking__intro { border-right: 0; border-bottom: 1px solid var(--aso-line); padding: 22px 18px; }
+	.aso-booking__main { padding: 22px 18px; }
+	.aso-booking__picker { grid-template-columns: 1fr; }
+	.aso-times { max-height: none; }
+	.aso-confirm { grid-template-columns: 1fr; gap: 2px; }
+	.aso-confirm dd { margin-bottom: 10px; }
+}
